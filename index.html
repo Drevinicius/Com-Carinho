@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mensagem de carinho</title>
+	<style>
+		body{
+			text-align: center;
+			font-family: verdana;
+			background: lightgrey;
+		}
+		.btn {
+			background-color: #FE9900;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease, transform 0.3s ease;
+			}
+
+		.btn:hover {
+			background-color: #E48C08;
+			transform: scale(1.1);
+		}
+	</style>
+</head>
+<body>
+    <h1>Click pra ouvir</h1>
+
+    <!--textarea id="textoInput" rows="4" cols="50" placeholder="Digite algo para o navegador falar..."></textarea><br-->
+    <button class = "btn"onclick="falar()">Click</button>
+
+    <script>
+        // Função JavaScript que será chamada quando o botão for clicado
+        function falar() {
+            // 1. Obter o texto da área de input
+            const texto = "Tu é muito nó cego";
+
+            if (texto.trim() !== '') {
+                // 2. Criar um objeto SpeechSynthesisUtterance com o texto
+                const enunciacao = new SpeechSynthesisUtterance(texto);
+
+                // 3. Opcional: Configurar propriedades da fala
+                enunciacao.lang = 'pt-BR'; // Define a linguagem para português do Brasil
+                enunciacao.volume = 1;     // Volume (0 a 1)
+                enunciacao.pitch = 1;      // Tom (0 a 2)
+                enunciacao.rate = 1;       // Velocidade (0.1 a 10)
+
+                // 4. Usar a API de síntese de fala do navegador para falar o texto
+                window.speechSynthesis.speak(enunciacao);
+            }
+        }
+    </script>
+</body>
+</html>
